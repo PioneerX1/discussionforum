@@ -12,9 +12,10 @@ public class Category {
 
     public Category() { }  // for Parceler
 
-    public Category(String name, String description) {
+    public Category(String name, String description, String imageUrl) {
         this.name = name;
         this.description = description;
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
