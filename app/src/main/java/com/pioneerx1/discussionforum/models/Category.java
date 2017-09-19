@@ -7,6 +7,7 @@ public class Category {
 
     private String name;
     private String description;
+    private String imageUrl;
     // no need for id??
 
     public Category() { }  // for Parceler
@@ -22,6 +23,10 @@ public class Category {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
 }
