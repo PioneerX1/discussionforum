@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.pioneerx1.discussionforum.Constants;
 import com.pioneerx1.discussionforum.R;
 import com.pioneerx1.discussionforum.models.Category;
 
@@ -23,8 +26,16 @@ public class NewCategoryActivity extends AppCompatActivity implements View.OnCli
     @Bind(R.id.categoryDescriptionInput) EditText mCategoryDescriptionInput;
     @Bind(R.id.categoryImageUrlInput) EditText mCategoryImageUrlInput;
 
+    private DatabaseReference mCategoryReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mCategoryReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_CATEGORY);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_category);
         ButterKnife.bind(this);
@@ -51,6 +62,12 @@ public class NewCategoryActivity extends AppCompatActivity implements View.OnCli
         } else {
             Category newCategory = new Category(name, description, imageUrl);
             Log.v(TAG, newCategory.getName() + " --- " + newCategory.getDescription() + " --- " + newCategory.getImageUrl());
+            saveCategoryToFirebase(newCategory);
         }
+    }
+
+    public void saveCategoryToFirebase(Category newCategory) {
+        mCategoryReference.push().setValue(newCategory);
+        Log.v(TAG, "CATEGORY " + newCategory.getName() + " PUSHED TO FIREBASE");
     }
 }
