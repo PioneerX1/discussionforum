@@ -29,7 +29,6 @@
                 android:value="com.pioneerx1.discussionforum.ui.MainActivity" />
         </activity>
         <activity android:name=".ui.CategoryDetailActivity" />
-        <activity android:name=".ui.SavedCategoryListActivity"></activity>
     </application>
 
 </manifest>
