@@ -25,18 +25,18 @@
 
 
     Models:
-    - category
-    - category name
-    - id
+    1. category
+     - category name
+     - id
 
-    - messages
-    - message title
-    - full message
-    - author
-    - id
-    - categoryId
+    2. messages
+     - message title
+     - full message
+     - author
+     - id
+     - categoryId
 
-    - comments
-    - full comment
-    - id
-    - messageId
+    3. comments
+     - full comment
+     - id
+     - messageId
