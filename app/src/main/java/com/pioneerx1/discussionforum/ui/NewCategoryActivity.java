@@ -1,5 +1,6 @@
 package com.pioneerx1.discussionforum.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -46,11 +47,15 @@ public class NewCategoryActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         if (v == mSubmitCategoryButton) {
+            // create Category Object and save to Firebase
             createCategory();
-            // go to next intent
+            // move to Category List Activity
+            Intent intent = new Intent(NewCategoryActivity.this, CategoryListActivity.class);
+            startActivity(intent);
         }
     }
 
+    // create Category object
     public void createCategory() {
         String name = mCategoryNameInput.getText().toString();
         String description = mCategoryDescriptionInput.getText().toString();
@@ -66,8 +71,10 @@ public class NewCategoryActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
+    // save Category to Firebase
     public void saveCategoryToFirebase(Category newCategory) {
         mCategoryReference.push().setValue(newCategory);
-        Log.v(TAG, "CATEGORY " + newCategory.getName() + " PUSHED TO FIREBASE");
+        //Log.v(TAG, "CATEGORY " + newCategory.getName() + " PUSHED TO FIREBASE");
+        Toast.makeText(NewCategoryActivity.this, "New Category Saved!", Toast.LENGTH_SHORT).show();
     }
 }
