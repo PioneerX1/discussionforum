@@ -22,12 +22,13 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class CategoryListActivity extends AppCompatActivity  {
+public class CategoryListActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DatabaseReference mCategoryReference;
     private FirebaseRecyclerAdapter mFirebaseAdapter;
 
     @Bind(R.id.categoryRecyclerView) RecyclerView mRecyclerView;
+    @Bind(R.id.newCategoryButton) Button mNewCategoryButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +36,17 @@ public class CategoryListActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_category_list);
         ButterKnife.bind(this);
 
+        mNewCategoryButton.setOnClickListener(this);
         mCategoryReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CATEGORY);
         setUpFirebaseAdapter();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == mNewCategoryButton) {
+            Intent intent = new Intent(CategoryListActivity.this, NewCategoryActivity.class);
+            startActivity(intent);
+        }
     }
 
     private void setUpFirebaseAdapter() {

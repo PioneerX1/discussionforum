@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/categoriesTitle"
+        android:layout_above="@+id/newCategoryButton"
         android:layout_marginTop="10dp"
         android:id="@+id/categoryRecyclerView"
     />
