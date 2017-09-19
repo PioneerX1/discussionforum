@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.pioneerx1.discussionforum.R;
 import com.pioneerx1.discussionforum.models.Category;
@@ -44,7 +45,12 @@ public class NewCategoryActivity extends AppCompatActivity implements View.OnCli
         String description = mCategoryDescriptionInput.getText().toString();
         String imageUrl = mCategoryImageUrlInput.getText().toString();
 
-        Category newCategory = new Category(name, description, imageUrl);
-        Log.v(TAG, newCategory.getName() + " --- " + newCategory.getDescription() + " --- " + newCategory.getImageUrl());
+        // validate form
+        if (name.equals("")|| description.equals("")) {
+            Toast.makeText(NewCategoryActivity.this, "Make sure Name and Description fields are complete!", Toast.LENGTH_SHORT).show();
+        } else {
+            Category newCategory = new Category(name, description, imageUrl);
+            Log.v(TAG, newCategory.getName() + " --- " + newCategory.getDescription() + " --- " + newCategory.getImageUrl());
+        }
     }
 }
