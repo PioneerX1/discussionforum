@@ -2,6 +2,7 @@ package com.pioneerx1.discussionforum.adapters;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,7 +16,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.pioneerx1.discussionforum.Constants;
 import com.pioneerx1.discussionforum.R;
 import com.pioneerx1.discussionforum.models.Category;
+import com.pioneerx1.discussionforum.ui.CategoryDetailActivity;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -64,7 +68,11 @@ public class FirebaseCategoryViewHolder extends RecyclerView.ViewHolder implemen
                 int itemPosition = getLayoutPosition();
 
                 // NEED CODE FOR NEXT INTENT HERE
+                Intent intent = new Intent(mContext, CategoryDetailActivity.class);
+                intent.putExtra("position", itemPosition + "");
+                intent.putExtra("categories", Parcels.wrap(categories));
 
+                mContext.startActivity(intent);
             }
 
             @Override
