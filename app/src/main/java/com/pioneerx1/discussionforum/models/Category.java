@@ -5,9 +5,9 @@ import org.parceler.Parcel;
 @Parcel
 public class Category {
 
-    private String name;
-    private String description;
-    private String imageUrl;
+    String name;
+    String description;
+    String imageUrl;
     // no need for id??
 
     public Category() { }  // for Parceler
