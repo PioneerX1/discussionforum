@@ -44,7 +44,7 @@ public class FirebaseMessageViewHolder extends RecyclerView.ViewHolder implement
         TextView messageContentTextView = (TextView) mView.findViewById(R.id.messageContentTextView);
 
         messageTitleTextView.setText(message.getTitle());
-        messageAuthorTextView.setText("by: " + message.getAuthor());
+        messageAuthorTextView.setText("  by: " + message.getAuthor());
         messageContentTextView.setText(message.getContent());
     }
 
@@ -57,7 +57,7 @@ public class FirebaseMessageViewHolder extends RecyclerView.ViewHolder implement
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    messages.add(snapshot.getValue(Message.class));
+                        messages.add(snapshot.getValue(Message.class));
                 }
 
                 int itemPosition = getLayoutPosition();

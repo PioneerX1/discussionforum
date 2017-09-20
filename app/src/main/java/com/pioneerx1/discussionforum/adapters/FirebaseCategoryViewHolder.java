@@ -4,6 +4,7 @@ package com.pioneerx1.discussionforum.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +25,8 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 
 public class FirebaseCategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+    public static final String TAG = FirebaseCategoryViewHolder.class.getSimpleName();
 
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
@@ -71,6 +74,9 @@ public class FirebaseCategoryViewHolder extends RecyclerView.ViewHolder implemen
                 Intent intent = new Intent(mContext, CategoryDetailActivity.class);
                 intent.putExtra("position", itemPosition + "");
                 intent.putExtra("categories", Parcels.wrap(categories));
+//                String passName = dataSnapshot.getValue(Category.class).getName();
+                Log.v(TAG, "What is mContext?????: " + mContext.toString());
+
 
                 mContext.startActivity(intent);
             }

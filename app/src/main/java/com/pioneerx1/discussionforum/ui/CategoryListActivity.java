@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -24,6 +25,8 @@ import butterknife.ButterKnife;
 
 public class CategoryListActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public static final String TAG = CategoryListActivity.class.getSimpleName();
+
     private DatabaseReference mCategoryReference;
     private FirebaseRecyclerAdapter mFirebaseAdapter;
 
@@ -38,6 +41,7 @@ public class CategoryListActivity extends AppCompatActivity implements View.OnCl
 
         mNewCategoryButton.setOnClickListener(this);
         mCategoryReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CATEGORY);
+
         setUpFirebaseAdapter();
     }
 
@@ -52,6 +56,7 @@ public class CategoryListActivity extends AppCompatActivity implements View.OnCl
     private void setUpFirebaseAdapter() {
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Category, FirebaseCategoryViewHolder>
                 (Category.class, R.layout.category_list_item, FirebaseCategoryViewHolder.class, mCategoryReference) {
+
 
             @Override
             protected void populateViewHolder(FirebaseCategoryViewHolder viewHolder, Category model, int position) {

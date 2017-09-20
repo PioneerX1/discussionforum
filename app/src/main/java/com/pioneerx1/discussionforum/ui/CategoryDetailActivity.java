@@ -45,6 +45,7 @@ public class CategoryDetailActivity extends AppCompatActivity implements View.On
 
         mNewMessageButton.setOnClickListener(this);
         mMessageReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_MESSAGE);
+        // Log.v(TAG, "WHAT IS mMESSAGEREFERENCE??  " + mMessageReference.toString());
         setUpFirebaseAdapter();
     }
 
