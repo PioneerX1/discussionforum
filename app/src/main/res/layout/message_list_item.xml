@@ -2,22 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:padding="10dp"
+    android:layout_marginTop="10dp"
+    >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/messageTitleAndAuthorTextView"
+        android:id="@+id/messageTitleTextView"
         android:textSize="15sp"
         android:textStyle="bold"
         android:text="Message Title &amp; Author"
         />
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/messageAuthorTextView"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        android:text="MessageAuthor"
+        android:layout_marginTop="3dp"
+        />
+
+    <TextView
         android:id="@+id/messageContentTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/messageTitleAndAuthorTextView"
+        android:layout_below="@+id/messageAuthorTextView"
         android:layout_marginTop="8dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

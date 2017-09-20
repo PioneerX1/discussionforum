@@ -39,10 +39,12 @@ public class FirebaseMessageViewHolder extends RecyclerView.ViewHolder implement
     }
 
     public void bindMessage(Message message) {
-        TextView messageTitleAndAuthorTextView = (TextView) mView.findViewById(R.id.messageTitleAndAuthorTextView);
+        TextView messageTitleTextView = (TextView) mView.findViewById(R.id.messageTitleTextView);
+        TextView messageAuthorTextView = (TextView) mView.findViewById(R.id.messageAuthorTextView);
         TextView messageContentTextView = (TextView) mView.findViewById(R.id.messageContentTextView);
 
-        messageTitleAndAuthorTextView.setText(message.getTitle() + "  by: " + message.getAuthor());
+        messageTitleTextView.setText(message.getTitle());
+        messageAuthorTextView.setText("by: " + message.getAuthor());
         messageContentTextView.setText(message.getContent());
     }
 
