@@ -66,7 +66,7 @@ public class NewCategoryActivity extends AppCompatActivity implements View.OnCli
             Toast.makeText(NewCategoryActivity.this, "Make sure Name and Description fields are complete!", Toast.LENGTH_SHORT).show();
         } else {
             Category newCategory = new Category(name, description, imageUrl);
-            Log.v(TAG, newCategory.getName() + " --- " + newCategory.getDescription() + " --- " + newCategory.getImageUrl());
+            // Log.v(TAG, newCategory.getName() + " --- " + newCategory.getDescription() + " --- " + newCategory.getImageUrl());
             saveCategoryToFirebase(newCategory);
         }
     }
