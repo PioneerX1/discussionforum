@@ -6,22 +6,26 @@
     android:layout_height="match_parent"
     tools:context="com.pioneerx1.discussionforum.ui.CategoryDetailActivity">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/categoryViewPager"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Posted Messages:"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/messagesHeader"
+        />
+
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.v4.view.PagerTabStrip
-            android:id="@+id/categoryPagerHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:paddingBottom="4dp"
-            android:paddingTop="4dp"
-
-            />
-
-    </android.support.v4.view.ViewPager>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/messagesHeader"
+        android:layout_above="@+id/newMessageButton"
+        android:layout_marginTop="10dp"
+        android:id="@+id/messageRecyclerView"
+        />
 
 
     <Button

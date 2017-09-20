@@ -29,7 +29,8 @@
                 android:value="com.pioneerx1.discussionforum.ui.MainActivity" />
         </activity>
         <activity android:name=".ui.CategoryDetailActivity" />
-        <activity android:name=".ui.NewMessageActivity"></activity>
+        <activity android:name=".ui.NewMessageActivity" />
+        <activity android:name=".ui.MessageDetailActivity"></activity>
     </application>
 
 </manifest>
