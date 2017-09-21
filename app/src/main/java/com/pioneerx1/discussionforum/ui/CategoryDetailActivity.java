@@ -1,6 +1,7 @@
 package com.pioneerx1.discussionforum.ui;
 
 import android.content.Intent;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,10 +16,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.pioneerx1.discussionforum.Constants;
 import com.pioneerx1.discussionforum.R;
 import com.pioneerx1.discussionforum.adapters.CategoryListAdapter;
+import com.pioneerx1.discussionforum.adapters.CategoryPagerAdapter;
 import com.pioneerx1.discussionforum.adapters.FirebaseCategoryViewHolder;
 import com.pioneerx1.discussionforum.adapters.FirebaseMessageViewHolder;
 import com.pioneerx1.discussionforum.models.Category;
 import com.pioneerx1.discussionforum.models.Message;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -28,7 +32,7 @@ import butterknife.ButterKnife;
 public class CategoryDetailActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String TAG = CategoryDetailActivity.class.getSimpleName();
-    public static final String categoryName = "Banjos";  // hard-coded for now
+    //public static final String categoryName = "Banjos";  // hard-coded for now
 
     private DatabaseReference mMessageReference;
     private FirebaseRecyclerAdapter mFirebaseAdapter;
@@ -36,12 +40,24 @@ public class CategoryDetailActivity extends AppCompatActivity implements View.On
     @Bind(R.id.messageRecyclerView) RecyclerView mRecyclerView;
     @Bind(R.id.newMessageButton) Button mNewMessageButton;
 
+    // new code pertaining to CategoryDetailFragment and CategoryPagerAdapter
+    @Bind(R.id.viewPager) ViewPager mViewPager;
+    private CategoryPagerAdapter adapterViewPager;
+    ArrayList<Category> mCategories = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_detail);
         ButterKnife.bind(this);
         Log.v(TAG, "-------DETAIL ACTIVITY REACHED!!!");
+
+        mCategories = Parcels.unwrap(getIntent().getParcelableExtra("categories"));
+        int startingPosition = getIntent().getIntExtra("position", 0);
+
+        adapterViewPager = new CategoryPagerAdapter(getSupportFragmentManager(), mCategories);
+        mViewPager.setAdapter(adapterViewPager);
+        mViewPager.setCurrentItem(startingPosition);
 
         mNewMessageButton.setOnClickListener(this);
         mMessageReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_MESSAGE);
